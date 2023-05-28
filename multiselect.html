@@ -1087,6 +1087,36 @@
             top: 16px;
         }
 
+        .webinar-popup-checkbox-container {
+            padding-top: 16px;
+        }
+
+        .webinar-popup-checkbox-container > div {
+            padding: 18px 14px;
+            background: #ffffff;
+            border-radius: 10px;
+            margin: 12px 0;
+        }
+
+        .webinar-popup-checkbox-container > div label{
+            font-family: 'RingCentral Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            color: #222222;
+            margin-bottom: 0;
+            padding-left: 10px;
+        }
+
+        .webinar-popup-checkbox-container input {
+            border: 1.5px solid #6F6F6F;
+            border-radius: 1px;
+            height: 20px;
+            width: 20px;
+            vertical-align: middle;
+        }
+
         /* FORM */
         .terms-text {
             font-family: 'RingCentral Sans'!important;
@@ -7131,6 +7161,16 @@ footer .currYear {
                 inputRequest();
             })
 
+            $(document).on("click", ".webinarPopupCheckbox", function() {
+                if ($(this).prop("checked")) {
+                    $("#" + $(this).data("id")).prop("checked", true)
+                } else {
+                    $("#" + $(this).data("id")).prop("checked", false)
+                }
+                webinarCounter();
+                inputRequest();
+            })
+
             // Modal Close Icon
             $(".close-icon").click(function(){
                 $('.bd-example-modal-lg').modal('hide');
@@ -7199,6 +7239,17 @@ footer .currYear {
             $(".webinar-popup-image img").attr("src",$(this).parent().parent().parent().find(".webinar-image img").attr("src"))
             $(".webinar-popup-title").html($(this).parent().parent().find(".webinarTitle").html())
             $(".webinar-popup-description").html($(this).parent().parent().find(".webinar-description").html())
+
+            var checkboxCounterID =  0;
+            $(".webinar-popup-checkbox-container").empty();
+            $(this).parent().parent().parent().find(".form-check-input").each(function(){
+                checkboxCounterID = checkboxCounterID + 1;
+                if($(this).prop("checked")){
+                    $(".webinar-popup-checkbox-container").append("<div><input type='checkbox' class='webinarPopupCheckbox' id='webinarPopupCheckbox"+ checkboxCounterID +"' data-id='" + $(this).attr("id") + "' checked><label for='webinarPopupCheckbox"+ checkboxCounterID +"'>"+ $(this).parent().find("label").text() +"</label></div>")
+                }else {
+                    $(".webinar-popup-checkbox-container").append("<div><input type='checkbox' class='webinarPopupCheckbox' id='webinarPopupCheckbox"+ checkboxCounterID +"' data-id='" + $(this).attr("id") + "' ><label for='webinarPopupCheckbox"+ checkboxCounterID +"'>"+ $(this).parent().find("label").text() +"</label></div>")
+                }
+            })
         })
 
         $(document).ready(function(){
@@ -7212,6 +7263,7 @@ footer .currYear {
                 }
             })
         })
+        
 
         
 
