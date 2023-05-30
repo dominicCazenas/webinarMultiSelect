@@ -7059,7 +7059,6 @@ footer .currYear {
                 $(".side-nav a").removeClass("nav-active");
                 $(".form-check-input").prop("checked", false)
                 $(this).addClass("nav-active");
-                clearBadge()
                 noWebinar()
 
                 if($(this).data("filter") != ".tab2"){
@@ -7073,7 +7072,6 @@ footer .currYear {
 
             $(".clear").click(function(){
                 $(".form-check-input").prop("checked", false)
-                clearBadge()
             })
 
             $(".form-check-input").each(function(){
@@ -7263,9 +7261,6 @@ footer .currYear {
                 }
             })
         })
-        
-
-        
 
         // $(".webinar-container").each(function(){
         //     if($(this).find("img").attr("src") == " " || $(this).find("img").attr("src") == ""){
